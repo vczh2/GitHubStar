@@ -44,9 +44,12 @@ class Gitstar():
                            , auth=AUTH)
 
     def update_gitstar(self):
-        url = "http://gitstar.top:88/star_update"
-        res = requests.get(url, headers={'Accept': 'application/json', 'Cookie': self.cookie})
-        print "update:" + str(res.status_code == 200)
+        while True:
+            url = "http://gitstar.top:88/star_update"
+            res = requests.get(url, headers={'Accept': 'application/json', 'Cookie': self.cookie})
+            print "update: " + str(res.status_code == 200)
+            if res.status_code == 200:
+                break
 
     def run_star(self):
         urls = self.get_gitstar_recommend()
