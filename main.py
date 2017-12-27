@@ -12,11 +12,11 @@ global GITPASSWORD
 
 
 class Gitstar():
-    def __init__(self, url=""):
-        self.NAME = NAME
-        self.PASSWORD = PASSWORD
-        self.GITNAME = GITNAME
-        self.GITPASSWORD = GITPASSWORD
+    def __init__(self, name, password, git_name, git_password):
+        self.NAME = name
+        self.PASSWORD = password
+        self.GITNAME = git_name
+        self.GITPASSWORD = git_password
 
         self.cookie = None
 
@@ -49,9 +49,9 @@ class Gitstar():
         print "update:" + str(res.status_code == 200)
 
 
-GS = Gitstar()
+GS = Gitstar(NAME, PASSWORD, GITNAME, GITPASSWORD)
 urls = GS.get_gitstar_recommend()
-print "get total github repo:%d" % len(urls)
+print "get total github repo for [%s]: %d" % (GS.NAME, len(urls))
 i = 1
 for url in urls:
     GS.star(url)
