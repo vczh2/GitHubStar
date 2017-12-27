@@ -48,15 +48,17 @@ class Gitstar():
         res = requests.get(url, headers={'Accept': 'application/json', 'Cookie': self.cookie})
         print "update:" + str(res.status_code == 200)
 
+    def run_star(self):
+        urls = self.get_gitstar_recommend()
+        print "get total github repo for [%s]: %d" % (self.NAME, len(urls))
+        i = 1
+        for url in urls:
+            self.star(url)
+            print "[%d]Stared! -->%s" % (i, url)
+            time.sleep(5.0)
+            i = i + 1
+        if len(urls) > 0:
+            self.update_gitstar()
 
-GS = Gitstar(NAME, PASSWORD, GITNAME, GITPASSWORD)
-urls = GS.get_gitstar_recommend()
-print "get total github repo for [%s]: %d" % (GS.NAME, len(urls))
-i = 1
-for url in urls:
-    GS.star(url)
-    print "[%d]Stared! -->%s" % (i, url)
-    time.sleep(5.0)
-    i = i + 1
-if len(urls) > 0:
-    GS.update_gitstar()
+
+Gitstar(NAME, PASSWORD, GITNAME, GITPASSWORD).run_star()
