@@ -1,7 +1,6 @@
-# -*- coding:utf-8 -*-
+# coding=utf8
 
 from settings import *
-import sys
 import requests
 import time
 from requests.auth import HTTPBasicAuth
@@ -10,9 +9,6 @@ global NAME
 global PASSWORD
 global GITNAME
 global GITPASSWORD
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
 
 
 class Gitstar():
@@ -24,14 +20,14 @@ class Gitstar():
 
         self.cookie = None
 
-    def loginGitStar(self):
+    def login_gitstar(self):
         r = requests.post("http://gitstar.top:88/api/user/login",
                           params={'username': self.NAME, 'password': self.PASSWORD})
         self.cookie = r.headers['Set-Cookie']
         return r.headers['Set-Cookie']
 
-    def getGitStarList(self):
-        cookie = self.loginGitStar()
+    def get_gitstar_recommend(self):
+        cookie = self.login_gitstar()
         url = "http://gitstar.top:88/api/users/{}/status/recommend".format(self.NAME)
         response = requests.get(url, headers={'Accept': 'application/json', 'Cookie': cookie})
         jsn = response.json()
@@ -54,7 +50,7 @@ class Gitstar():
 
 
 GS = Gitstar()
-urls = GS.getGitStarList()
+urls = GS.get_gitstar_recommend()
 print "get total github repo:%d" % len(urls)
 i = 1
 for url in urls:
