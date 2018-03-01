@@ -62,7 +62,7 @@ class Gitstar():
                 time.sleep(5.0)
                 i = i + 1        
         finally:  
-        	print "please waiting to update data..."
+        	print "Please wait to update the data..."
         	if len(urls) > 0:
 				self.update_gitstar()
 
