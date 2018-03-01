@@ -55,13 +55,16 @@ class Gitstar():
         urls = self.get_gitstar_recommend()
         print "get total github repo for [%s]: %d" % (self.NAME, len(urls))
         i = 1
-        for url in urls:
-            self.star(url)
-            print "[%d]Stared! -->%s" % (i, url)
-            time.sleep(5.0)
-            i = i + 1
-        if len(urls) > 0:
-            self.update_gitstar()
+        try:
+            for url in urls:
+                self.star(url)
+                print "[%d]Stared! -->%s" % (i, url)
+                time.sleep(5.0)
+                i = i + 1        
+        finally:  
+        	print "please waiting to update data..."
+        	if len(urls) > 0:
+				self.update_gitstar()
 
 
 if 'NAME' in dir():
