@@ -3,9 +3,9 @@ Engish [here](README.md)
 gitstar自动点赞工具
 # 快速入门
 ## Linux
-### 使用Docker运行
+### 使用Docker运行
 > 如果你机器上安装有Docker，可以按命令直接运行镜像即可。
-- 执行以下命令即可，注意以下环境变量把它们改成你自己的信息。
+- 执行以下命令即可，注意以下环境变量把它们改成你自己的信息。
     ```
     docker run --rm \
            -e NAME={NAME} \
@@ -17,7 +17,7 @@ gitstar自动点赞工具
 
 ### 使用源码运行
 #### 第一步
-1. 安装python2.x版本，执行`python --version`确认版本。
+1. 安装python2.x版本，执行`python --version`确认版本。
 1. 安装pip，从这里下载[get-pip.py](https://bootstrap.pypa.io/get-pip.py)脚本。
     ```
     python get-pip.py
