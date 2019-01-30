@@ -21,14 +21,14 @@ class Gitstar():
         self.cookie = None
 
     def login_gitstar(self):
-        r = requests.post("http://gitstar.top:88/api/user/login",
+        r = requests.post("http://218.241.135.34:88/api/user/login",
                           params={'username': self.NAME, 'password': self.PASSWORD})
         self.cookie = r.headers['Set-Cookie']
         return r.headers['Set-Cookie']
 
     def get_gitstar_recommend(self):
         cookie = self.login_gitstar()
-        url = "http://gitstar.top:88/api/users/{}/status/recommend".format(self.NAME)
+        url = "http://218.241.135.34:88/api/users/{}/status/recommend".format(self.NAME)
         response = requests.get(url, headers={'Accept': 'application/json', 'Cookie': cookie})
         jsn = response.json()
         list = []
@@ -45,7 +45,7 @@ class Gitstar():
 
     def update_gitstar(self):
         while True:
-            url = "http://gitstar.top:88/star_update"
+            url = "http://218.241.135.34:88/star_update"
             res = requests.get(url, headers={'Accept': 'application/json', 'Cookie': self.cookie})
             print "update: " + str(res.status_code == 200)
             if res.status_code == 200:
