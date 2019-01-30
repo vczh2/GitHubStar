@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-  
-
+import os
 #############settings#############
-NAME		= "1" #GitStar用户名
-PASSWORD	= "1" #GitStar密码
-GITNAME		= "1" #GitHub用户名
-GITPASSWORD	= "1" #GitHub密码
+NAME		= os.environ.get("NAME")
+PASSWORD	= os.environ.get("PASSWORD")
+GITNAME		= os.environ.get("GITNAME")
+GITPASSWORD	= os.environ.get("GITPASSWORD")
 #############settings#############
