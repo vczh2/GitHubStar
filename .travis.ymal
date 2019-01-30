@@ -1,0 +1,17 @@
+linux: &linux
+  os: linux
+  sudo: required
+  language: python
+  python: "2.7"
+  services:
+    - docker
+osx: &osx
+  os: osx
+  language: generic
+
+
+install:
+  - sudo pip install -r requirements.txt
+
+script:
+  - sudo python -u main.py
